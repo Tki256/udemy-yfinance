@@ -19,7 +19,7 @@ st.write(f"""
 ### 過去**{days}日間** のGAFA株価
 """)
 
-@st.cache
+@st.cache_data
 def get_data(days,tickers):
     df = pd.DataFrame()
     for company in tickers.keys():
@@ -45,7 +45,6 @@ try:
 
     tickers = {
         "apple":"AAPL",
-        "facebook":"FB",
         "google":"GOOGL",
         "microsoft":"MSFT",
         "netflix":"NFLX",
@@ -57,7 +56,7 @@ try:
     companies = st.multiselect(
         "会社を選択してください",
         list(df.index),
-        ["google","amazon", "facebook", "apple"]
+        ["google","amazon", "apple"]
     )
 
     if not companies:
